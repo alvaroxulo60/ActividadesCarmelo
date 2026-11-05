@@ -32,28 +32,48 @@ class Screen extends StatelessWidget {
                             child: Row(
                               spacing: 2,
                               mainAxisSize: .max,
-                              children: [Expanded(child: Escudo()), Expanded(child: Escudo()), Expanded(child: Escudo()), Expanded(child: Escudo())],
+                              children: [
+                                Expanded(child: Escudo()),
+                                Expanded(child: Escudo()),
+                                Expanded(child: Escudo()),
+                                Expanded(child: Escudo()),
+                              ],
                             ),
                           ),
                           Expanded(
                             child: Row(
                               spacing: 2,
                               mainAxisSize: .max,
-                              children: [Expanded(child: Escudo()), Expanded(child: Escudo()), Expanded(child: Escudo()), Expanded(child: Escudo())],
+                              children: [
+                                Expanded(child: Escudo()),
+                                Expanded(child: Escudo()),
+                                Expanded(child: Escudo()),
+                                Expanded(child: Escudo()),
+                              ],
                             ),
                           ),
                           Expanded(
                             child: Row(
                               spacing: 2,
                               mainAxisSize: .max,
-                              children: [Expanded(child: Escudo()), Expanded(child: Escudo()), Expanded(child: Escudo()), Expanded(child: Escudo())],
+                              children: [
+                                Expanded(child: Escudo()),
+                                Expanded(child: Escudo()),
+                                Expanded(child: Escudo()),
+                                Expanded(child: Escudo()),
+                              ],
                             ),
                           ),
                           Expanded(
                             child: Row(
                               spacing: 2,
                               mainAxisSize: .max,
-                              children: [Expanded(child: Escudo()), Expanded(child: Escudo()), Expanded(child: Escudo()), Expanded(child: Escudo())],
+                              children: [
+                                Expanded(child: Escudo()),
+                                Expanded(child: Escudo()),
+                                Expanded(child: Escudo()),
+                                Expanded(child: Escudo()),
+                              ],
                             ),
                           ),
                         ],
@@ -67,6 +87,27 @@ class Screen extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
                         color: Colors.blueGrey[800],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: .spaceAround,
+                        children: [
+                          Expanded(
+                            child: PlayerData(
+                              color: Colors.blue,
+                              nombre: "Jugador 1",
+                              puntos: 120,
+                              icon: Icons.person,
+                            ),
+                          ),
+                          Expanded(
+                            child: PlayerData(
+                              color: Colors.red,
+                              nombre: "Jugador 2",
+                              puntos: 120,
+                              icon: Icons.person_outlined,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -91,7 +132,38 @@ class Escudo extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(5)),
         color: Colors.blueGrey[500],
       ),
-      child: Center(child: Icon(Icons.shield,color: Colors.grey,)),
+      child: Center(child: Icon(Icons.shield, color: Colors.grey)),
+    );
+  }
+}
+
+class PlayerData extends StatelessWidget {
+  Color _color;
+  String _nombre;
+  int _puntos;
+  IconData _icon;
+
+  PlayerData({
+    super.key,
+    required this._color,
+    required this._nombre,
+    required this._puntos,
+    required this._icon
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        mainAxisAlignment: .center,
+        children: [
+          Text("$_nombre", style: TextStyle(color: Colors.white),),
+          SizedBox(height: 15,),
+          Icon(_icon, color: _color,size: 48,),
+          SizedBox(height: 15,),
+          Text("Puntos: $_puntos",style: TextStyle(color: Colors.white),),
+        ],
+      ),
     );
   }
 }
