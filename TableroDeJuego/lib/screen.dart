@@ -9,7 +9,11 @@ class Screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey[900],
-        title: Text("Tablero de juego Táctico",textAlign: .center,style: TextStyle(color: Colors.white),),
+        title: Text(
+          "Tablero de juego Táctico",
+          textAlign: .center,
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: Column(
         mainAxisSize: .max,
@@ -121,15 +125,22 @@ class Screen extends StatelessWidget {
               color: Colors.white54,
               child: Column(
                 children: [
-                  Expanded(child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("Historial de Movimientos", textAlign: .center, style: TextStyle(fontWeight: .bold, fontSize: 20),),
-                  )),
-                  Expanded(flex: 3,
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Historial de Movimientos",
+                        textAlign: .center,
+                        style: TextStyle(fontWeight: .bold, fontSize: 20),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
                     child: ListView.builder(
                       itemBuilder: (context, index) => Historial(
                         color: index % 2 == 0 ? Colors.blue : Colors.red,
-                        jugador: index %2 == 0 ? "Jugador 1": "Jugador 2",
+                        jugador: index % 2 == 0 ? "Jugador 1" : "Jugador 2",
                       ),
                       itemCount: 5,
                     ),
@@ -195,12 +206,15 @@ class Historial extends StatelessWidget {
   String _jugador;
   static int _contador = 1;
 
-  Historial({super.key, required this._color, required this._jugador,});
+  Historial({super.key, required this._color, required this._jugador});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleAvatar(child: Text("${_contador++}", style: TextStyle(color: Colors.white),),backgroundColor: _color,),
+      leading: CircleAvatar(
+        child: Text("${_contador++}", style: TextStyle(color: Colors.white)),
+        backgroundColor: _color,
+      ),
       title: Text("$_jugador movió pieza"),
       subtitle: Text("Caballero a la casilla C4"),
       trailing: Icon(Icons.history),
