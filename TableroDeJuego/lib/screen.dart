@@ -9,7 +9,7 @@ class Screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey[900],
-        title: Text("Tablero de juego Táctico"),
+        title: Text("Tablero de juego Táctico",textAlign: .center,style: TextStyle(color: Colors.white),),
       ),
       body: Column(
         mainAxisSize: .max,
