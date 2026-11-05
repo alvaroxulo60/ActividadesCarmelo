@@ -115,7 +115,29 @@ class Screen extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(flex: 2, child: Container(color: Colors.white54)),
+          Expanded(
+            flex: 2,
+            child: Container(
+              color: Colors.white54,
+              child: Column(
+                children: [
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Historial de Movimientos", textAlign: .center, style: TextStyle(fontWeight: .bold, fontSize: 20),),
+                  )),
+                  Expanded(flex: 3,
+                    child: ListView.builder(
+                      itemBuilder: (context, index) => Historial(
+                        color: index % 2 == 0 ? Colors.blue : Colors.red,
+                        jugador: index %2 == 0 ? "Jugador 1": "Jugador 2",
+                      ),
+                      itemCount: 5,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -148,7 +170,7 @@ class PlayerData extends StatelessWidget {
     required this._color,
     required this._nombre,
     required this._puntos,
-    required this._icon
+    required this._icon,
   });
 
   @override
@@ -157,13 +179,31 @@ class PlayerData extends StatelessWidget {
       child: Column(
         mainAxisAlignment: .center,
         children: [
-          Text("$_nombre", style: TextStyle(color: Colors.white),),
-          SizedBox(height: 15,),
-          Icon(_icon, color: _color,size: 48,),
-          SizedBox(height: 15,),
-          Text("Puntos: $_puntos",style: TextStyle(color: Colors.white),),
+          Text("$_nombre", style: TextStyle(color: Colors.white)),
+          SizedBox(height: 15),
+          Icon(_icon, color: _color, size: 48),
+          SizedBox(height: 15),
+          Text("Puntos: $_puntos", style: TextStyle(color: Colors.white)),
         ],
       ),
+    );
+  }
+}
+
+class Historial extends StatelessWidget {
+  Color _color;
+  String _jugador;
+  static int _contador = 1;
+
+  Historial({super.key, required this._color, required this._jugador,});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: CircleAvatar(child: Text("${_contador++}", style: TextStyle(color: Colors.white),),backgroundColor: _color,),
+      title: Text("$_jugador movió pieza"),
+      subtitle: Text("Caballero a la casilla C4"),
+      trailing: Icon(Icons.history),
     );
   }
 }
