@@ -16,7 +16,7 @@ class Planets extends StatelessWidget {
       body: ListView.separated(
         itemBuilder: (context, index) {
           PlanetsData p = PlanetsData.planets[index];
-          return PlanetTile(nombre: p.nombre, image: p.image);
+          return PlanetTile(nombre: p.nombre, image: p.image, desc: p.desc);
         },
         itemCount: PlanetsData.planets.length,
         separatorBuilder: (context, index) {
@@ -30,14 +30,16 @@ class Planets extends StatelessWidget {
 class PlanetTile extends StatelessWidget {
   String _nombre;
   String _image;
+  String _desc;
 
-  PlanetTile({super.key, required this._nombre, required this._image});
+  PlanetTile({super.key, required this._nombre, required this._image,required this._desc});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       leading: Image.asset(_image),
       title: Text(_nombre),
+      subtitle: Text(_desc),
       trailing: Icon(Icons.keyboard_arrow_right),);
   }
 }
