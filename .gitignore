@@ -108,6 +108,7 @@ build/
 *.iws
 .idea/
 .metadata
+.metadata
 
 /ios/ /profile
 **/ios/Flutter/.last_build_id
