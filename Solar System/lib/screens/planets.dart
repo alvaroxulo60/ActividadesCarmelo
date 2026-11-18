@@ -2,33 +2,42 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:solar_system/data/planets_data.dart';
 
-class Planets extends StatelessWidget{
+class Planets extends StatelessWidget {
   const Planets({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(itemBuilder: (context, index) {
-        PlanetsData p = PlanetsData.planets[index];
-        return PlanetTile(nombre: p.nombre, image: p.image);
-      },itemCount: PlanetsData.planets.length,),
+      appBar: AppBar(
+        backgroundColor: Colors.grey[800],
+        centerTitle: true,
+        title: Text("Solar System", style: TextStyle(color: Colors.white)),
+      ),
+      body: ListView.separated(
+        itemBuilder: (context, index) {
+          PlanetsData p = PlanetsData.planets[index];
+          return PlanetTile(nombre: p.nombre, image: p.image);
+        },
+        itemCount: PlanetsData.planets.length,
+        separatorBuilder: (context, index) {
+          return Divider(height: 0,);
+        },
+      ),
     );
   }
 }
 
-
-
-class PlanetTile extends StatelessWidget{
+class PlanetTile extends StatelessWidget {
   String _nombre;
   String _image;
-  PlanetTile({super.key,required this._nombre,required this._image});
-  
+
+  PlanetTile({super.key, required this._nombre, required this._image});
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
       leading: Image.asset(_image),
       title: Text(_nombre),
-    );
+      trailing: Icon(Icons.keyboard_arrow_right),);
   }
-  
 }
