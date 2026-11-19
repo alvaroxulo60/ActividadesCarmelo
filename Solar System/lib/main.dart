@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:solar_system/screens/planets.dart';
+import 'package:solar_system/screens/planets_details.dart';
 
 void main() {
   runApp(const MyApp());
