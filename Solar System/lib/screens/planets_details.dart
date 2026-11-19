@@ -8,7 +8,7 @@ class PlanetsDetails extends StatelessWidget{
   PlanetsDetails({super.key, required this._index});
   @override
   Widget build(BuildContext context) {
-    
+    // No cambia nada
     PlanetData p = PlanetData.planets[_index];
     return Scaffold(
       appBar: AppBar(
