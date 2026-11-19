@@ -16,16 +16,21 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
 
-      routes: {
-        "/": (context) => Planets(),
-        "/details": (context)  {
-          final args = ModalRoute.of(context)?.settings.arguments;
-          final index = args is int ? args : 0; //Por defecto 0 por si algo sale mal
-          return PlanetsDetails(index: index);
+      onGenerateRoute: (settings) {
+        if (settings.name == "/") {
+          return MaterialPageRoute(builder: (context) => Planets());
         }
-      },
 
+        var uri = Uri.parse(settings.name ?? "/");
+        if (uri.pathSegments.length == 2 &&
+            uri.pathSegments.first == "details") {
+          var id = uri.pathSegments[1];
+          return MaterialPageRoute(
+            builder: (context) => PlanetsDetails(index: int.parse(id)),
+          );
+        }
+        return MaterialPageRoute(builder: (context) => Planets());
+      },
     );
   }
 }
-

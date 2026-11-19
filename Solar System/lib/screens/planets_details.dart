@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:solar_system/data/planet_data.dart';
 
-class PlanetsDetails extends StatelessWidget{
+class PlanetsDetails extends StatelessWidget {
   int _index;
-  
+
   PlanetsDetails({super.key, required this._index});
+
   @override
   Widget build(BuildContext context) {
     // No cambia nada
@@ -15,9 +16,14 @@ class PlanetsDetails extends StatelessWidget{
         backgroundColor: Colors.grey[800],
         centerTitle: true,
         title: Text("Planets Details", style: TextStyle(color: Colors.white)),
-        leading: IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back_ios, color: Colors.white,)),
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+        ),
       ),
-      body: Center(child: Image.asset(p.image),),
+      body: Center(
+        child: Column(children: [Image.asset(p.image), Container(margin: EdgeInsets.all(5),child: Text(p.desc, textAlign: TextAlign.center,style: TextStyle(fontSize: 18),))]),
+      ),
     );
   }
 }
