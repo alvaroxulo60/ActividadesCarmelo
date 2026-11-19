@@ -44,7 +44,7 @@ class PlanetTile extends StatelessWidget {
       subtitle: Text(_desc),
       trailing: Icon(Icons.keyboard_arrow_right),
       onTap: () {
-        Navigator.pushNamed(context, "details/$_index");
+        Navigator.pushNamed(context, "/details", arguments: _index);
       },
     );
   }
