@@ -45,7 +45,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(label: Text("Username")),
                       validator: (value) {
-                        if (value!.isEmpty) {
+                        if (value == null || value.isEmpty) {
                           return "Debe rellenar el campo";
                         } else {
                           return null;
@@ -59,7 +59,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(label: Text("Password")),
                       validator: (value) {
-                        if (value!.isEmpty) {
+                        if (value == null || value.isEmpty) {
                           return "Debe rellenar el campo";
                         } else {
                           return null;
@@ -72,14 +72,19 @@ class _LogInScreenState extends State<LogInScreen> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formkey.currentState!.validate()) {
-                          Navigator.pushNamed(context, "");
+                          Navigator.pushNamed(context, "info");
                         }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.teal[600],
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
-                      child: const Text("Iniciar Sesión", style: TextStyle(color: Colors.white),),
+                      child: const Text(
+                        "Iniciar Sesión",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ],

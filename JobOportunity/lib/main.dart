@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:job_oportunity/log_in_screen.dart';
+import 'package:job_oportunity/screens/info_screen.dart';
+import 'package:job_oportunity/screens/log_in_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LogInScreen(),
+      initialRoute: "/",
+      onGenerateRoute: (settings) {
+        if(settings.name == "/"){
+          return MaterialPageRoute(builder: (context) => LogInScreen(),);
+        }
+
+        if(settings.name == "info"){
+          return MaterialPageRoute(builder: (context) => InfoScreen(),);
+        }
+
+        return MaterialPageRoute(builder:  (context) => LogInScreen(),);
+      },
     );
   }
 }
