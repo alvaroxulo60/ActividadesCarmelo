@@ -41,6 +41,7 @@ class DetailsScreen extends StatelessWidget{
           "Sharing oportunities",
           style: TextStyle(color: Colors.white),
         ),
+        iconTheme: IconThemeData(color: Colors.white),
         toolbarHeight: 48,
       ),
       body: Center(

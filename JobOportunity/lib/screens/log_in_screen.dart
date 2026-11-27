@@ -29,8 +29,8 @@ class _LogInScreenState extends State<LogInScreen> {
             Expanded(
               child: Image.asset(
                 "assets/images/rigby.jpg",
-                width: 200,
-                height: 200,
+                width: 300,
+                height: 300,
               ),
             ),
             Expanded(
@@ -39,7 +39,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 20),
                       child: TextFormField(
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(label: Text("Username")),
@@ -53,9 +53,10 @@ class _LogInScreenState extends State<LogInScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 20),
                       child: TextFormField(
                         keyboardType: TextInputType.name,
+                        obscureText: true,
                         decoration: InputDecoration(label: Text("Password")),
                         validator: (value) {
                           if (value == null || value.isEmpty) {

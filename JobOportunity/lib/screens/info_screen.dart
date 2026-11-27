@@ -27,6 +27,7 @@ class InfoScreenState extends State<InfoScreen> {
         centerTitle: true,
         title: Text("Sharing oportunities", style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.teal[600],
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Form(
         key: _formKey,
