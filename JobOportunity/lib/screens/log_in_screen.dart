@@ -26,68 +26,69 @@ class _LogInScreenState extends State<LogInScreen> {
       body: Center(
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.all(20),
+            Expanded(
               child: Image.asset(
                 "assets/images/rigby.jpg",
                 width: 200,
                 height: 200,
-                fit: BoxFit.fill,
               ),
             ),
-            Form(
-              key: _formkey,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20),
-                    child: TextFormField(
-                      keyboardType: TextInputType.name,
-                      decoration: InputDecoration(label: Text("Username")),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Debe rellenar el campo";
-                        } else {
-                          return null;
-                        }
-                      },
+            Expanded(
+              child: Form(
+                key: _formkey,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: TextFormField(
+                        keyboardType: TextInputType.name,
+                        decoration: InputDecoration(label: Text("Username")),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Debe rellenar el campo";
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20),
-                    child: TextFormField(
-                      keyboardType: TextInputType.name,
-                      decoration: InputDecoration(label: Text("Password")),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Debe rellenar el campo";
-                        } else {
-                          return null;
-                        }
-                      },
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: TextFormField(
+                        keyboardType: TextInputType.name,
+                        decoration: InputDecoration(label: Text("Password")),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Debe rellenar el campo";
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(5),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        if (_formkey.currentState!.validate()) {
-                          Navigator.pushNamed(context, "info");
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal[600],
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                    SizedBox(height: 10,),
+                    Padding(
+                      padding: EdgeInsets.all(5),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_formkey.currentState!.validate()) {
+                            Navigator.pushNamed(context, "info");
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.teal[600],
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: const Text(
+                          "Iniciar Sesión",
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
-                      child: const Text(
-                        "Iniciar Sesión",
-                        style: TextStyle(color: Colors.white),
-                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

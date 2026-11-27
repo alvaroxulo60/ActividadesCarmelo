@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_oportunity/data/details.dart';
 
 class InfoScreen extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class InfoScreen extends StatefulWidget {
 class InfoScreenState extends State<InfoScreen> {
   final _formKey = GlobalKey<FormState>();
 
+  var _valueTextField = "";
   bool _remote = false;
   bool _flutter = false;
   bool _android = false;
@@ -21,7 +23,11 @@ class InfoScreenState extends State<InfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: Text("Sharing oportunities")),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Sharing oportunities", style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.teal[600],
+      ),
       body: Form(
         key: _formKey,
         child: Column(
@@ -31,9 +37,16 @@ class InfoScreenState extends State<InfoScreen> {
               child: TextFormField(
                 keyboardType: TextInputType.name,
                 decoration: InputDecoration(label: Text("Job Title")),
-                validator: (value) => value == null || value.isEmpty
-                    ? "Debe rellenar el campo"
-                    : null,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Debe introducir un valor válido";
+                  } else {
+                    setState(() {
+                      _valueTextField = value;
+                    });
+                    return null;
+                  }
+                },
               ),
             ),
             SwitchListTile(
@@ -103,6 +116,8 @@ class InfoScreenState extends State<InfoScreen> {
               title: Text("Ios: "),
               activeColor: Colors.blue,
             ),
+            SizedBox(height: 10),
+            Center(child: Text("Salary", style: TextStyle(fontSize: 14))),
             RangeSlider(
               values: _rangeValues,
               min: 0,
@@ -112,11 +127,25 @@ class InfoScreenState extends State<InfoScreen> {
                   _rangeValues = valores;
                 });
               },
+              activeColor: Colors.blue,
               divisions: 10,
               labels: RangeLabels(
                 _rangeValues.start.round().toString(),
                 _rangeValues.end.round().toString(),
               ),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                if(_formKey.currentState!.validate()){
+                  Navigator.pushNamed(context, "details",arguments: Details(_valueTextField, _remote, _flutter, _android, _ios, _rangeValues));
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal[600],
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+              ),
+              child: Text("Detalles", style: TextStyle(color: Colors.white)),
             ),
           ],
         ),
